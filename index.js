@@ -11,10 +11,12 @@ app.get('/', (req, res) => {
 
 app.options('/upload', cors());
 app.post('/upload', cors(), upload.single('file'), (req, res) => {
+  console.log('post')
   res.send(req.file.filename);
 });
 
 app.get('/preview/:key', cors(), (req, res) => {
+  console.log('sss')
   res.sendFile(
     `uploads/${req.params.key}`,
     {
